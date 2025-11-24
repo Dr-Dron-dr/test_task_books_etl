@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict B7YwMdifM9reakiI0osL8rPj5xnQDA4m79qs7xkFtOLRyWnD6kxMYwGpXPWAKxk
+\restrict ELOr5Ldx02aWij9bDIdJIPxCtYLK9UxglsxkeqLhUlnp0G5ieLPgpLx8dknoHL3
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
 
--- Started on 2025-11-24 22:10:04
+-- Started on 2025-11-24 22:13:11
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,19 +20,6 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
-
---
--- TOC entry 858 (class 1247 OID 16425)
--- Name: price_category; Type: TYPE; Schema: public; Owner: postgres
---
-
-CREATE TYPE public.price_category AS ENUM (
-    'budget',
-    'premium'
-);
-
-
-ALTER TYPE public.price_category OWNER TO postgres;
 
 SET default_tablespace = '';
 
@@ -72,7 +59,7 @@ CREATE SEQUENCE public.books_book_id_seq
 ALTER SEQUENCE public.books_book_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4933 (class 0 OID 0)
+-- TOC entry 4930 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: books_book_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -117,7 +104,7 @@ CREATE SEQUENCE public.books_processed_processed_id_seq
 ALTER SEQUENCE public.books_processed_processed_id_seq OWNER TO postgres;
 
 --
--- TOC entry 4934 (class 0 OID 0)
+-- TOC entry 4931 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: books_processed_processed_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -126,7 +113,7 @@ ALTER SEQUENCE public.books_processed_processed_id_seq OWNED BY public.books_pro
 
 
 --
--- TOC entry 4763 (class 2604 OID 16393)
+-- TOC entry 4760 (class 2604 OID 16393)
 -- Name: books book_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -134,7 +121,7 @@ ALTER TABLE ONLY public.books ALTER COLUMN book_id SET DEFAULT nextval('public.b
 
 
 --
--- TOC entry 4766 (class 2604 OID 24606)
+-- TOC entry 4763 (class 2604 OID 24606)
 -- Name: books_processed processed_id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -142,7 +129,7 @@ ALTER TABLE ONLY public.books_processed ALTER COLUMN processed_id SET DEFAULT ne
 
 
 --
--- TOC entry 4925 (class 0 OID 16390)
+-- TOC entry 4922 (class 0 OID 16390)
 -- Dependencies: 220
 -- Data for Name: books; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -158,7 +145,7 @@ COPY public.books (book_id, title, price, genre, stock_quantity, last_updated) F
 
 
 --
--- TOC entry 4927 (class 0 OID 24603)
+-- TOC entry 4924 (class 0 OID 24603)
 -- Dependencies: 222
 -- Data for Name: books_processed; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -168,7 +155,7 @@ COPY public.books_processed (processed_id, book_id, title, original_price, round
 
 
 --
--- TOC entry 4935 (class 0 OID 0)
+-- TOC entry 4932 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: books_book_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -177,7 +164,7 @@ SELECT pg_catalog.setval('public.books_book_id_seq', 16, true);
 
 
 --
--- TOC entry 4936 (class 0 OID 0)
+-- TOC entry 4933 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: books_processed_processed_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -186,7 +173,7 @@ SELECT pg_catalog.setval('public.books_processed_processed_id_seq', 75, true);
 
 
 --
--- TOC entry 4770 (class 2606 OID 16401)
+-- TOC entry 4767 (class 2606 OID 16401)
 -- Name: books books_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -195,7 +182,7 @@ ALTER TABLE ONLY public.books
 
 
 --
--- TOC entry 4775 (class 2606 OID 24614)
+-- TOC entry 4772 (class 2606 OID 24614)
 -- Name: books_processed books_processed_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -204,7 +191,7 @@ ALTER TABLE ONLY public.books_processed
 
 
 --
--- TOC entry 4771 (class 1259 OID 24577)
+-- TOC entry 4768 (class 1259 OID 24577)
 -- Name: idx_books_genre; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -212,7 +199,7 @@ CREATE INDEX idx_books_genre ON public.books USING btree (genre) WITH (deduplica
 
 
 --
--- TOC entry 4772 (class 1259 OID 24578)
+-- TOC entry 4769 (class 1259 OID 24578)
 -- Name: idx_books_last_updated ; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -220,7 +207,7 @@ CREATE INDEX "idx_books_last_updated " ON public.books USING btree (last_updated
 
 
 --
--- TOC entry 4773 (class 1259 OID 24579)
+-- TOC entry 4770 (class 1259 OID 24579)
 -- Name: idx_books_price_range ; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -228,7 +215,7 @@ CREATE INDEX "idx_books_price_range " ON public.books USING btree (price) WITH (
 
 
 --
--- TOC entry 4776 (class 2606 OID 24615)
+-- TOC entry 4773 (class 2606 OID 24615)
 -- Name: books_processed processed_book_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -236,11 +223,11 @@ ALTER TABLE ONLY public.books_processed
     ADD CONSTRAINT processed_book_fk FOREIGN KEY (book_id) REFERENCES public.books(book_id) ON DELETE CASCADE;
 
 
--- Completed on 2025-11-24 22:10:04
+-- Completed on 2025-11-24 22:13:12
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict B7YwMdifM9reakiI0osL8rPj5xnQDA4m79qs7xkFtOLRyWnD6kxMYwGpXPWAKxk
+\unrestrict ELOr5Ldx02aWij9bDIdJIPxCtYLK9UxglsxkeqLhUlnp0G5ieLPgpLx8dknoHL3
 
